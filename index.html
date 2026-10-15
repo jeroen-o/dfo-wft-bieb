@@ -73,6 +73,12 @@ a{color:var(--dfo-blue)}
 .topnav a{color:var(--dfo-blue);text-decoration:none;font-weight:500}
 .topnav a:hover{text-decoration:underline}
 .topnav a.actief{color:#7FA6CF}
+.topnav{font-size:14px;gap:4px 22px}
+.toprechts{display:flex;align-items:center;gap:18px}
+.navknop{background:var(--dfo-blue);color:#fff;text-decoration:none;font-size:13px;font-weight:600;padding:8px 14px;border-radius:var(--radius);white-space:nowrap}
+.navknop:hover{background:var(--dfo-blue-dark)}
+.topnav .kort{display:none}
+.navknop:focus-visible{outline:2px solid var(--dfo-blue-dark);outline-offset:2px}
 
 /* Kopband */
 .masthead{background:linear-gradient(100deg,#0A4683 0%,#0E5AA7 55%,#3F7FC0 100%);color:#fff;position:relative;overflow:hidden}
@@ -256,7 +262,11 @@ footer a{color:#fff}
 
 @media (max-width:600px){
   .masthead h1{font-size:27px}
-  .topbar .wrap{flex-direction:column-reverse;align-items:flex-start;gap:8px}
+  .topbar .wrap{flex-direction:column-reverse;align-items:stretch;gap:10px}
+  .toprechts{justify-content:space-between}
+  .topnav{font-size:13.5px;gap:4px 16px;flex-wrap:nowrap}
+  .topnav .lang{display:none}
+  .topnav .kort{display:inline}
   .logo img{height:36px}
   .masthead .wrap{padding-block:26px 28px}
   .grid{grid-template-columns:1fr}
@@ -284,19 +294,18 @@ footer a{color:#fff}
 <div class="topbar">
   <div class="wrap">
     <nav class="topnav" aria-label="Pagina">
-      <a href="#regelgeving">Wet- en regelgeving</a>
-      <a href="#kennis-sectie">Kennis en praktijk</a>
-      <a href="#compliance">DFO Compliance</a>
-      <a href="#toezicht">Toezicht</a>
-      <a href="#rekenen">Rekenen</a>
-      <a href="#faq">Vragen</a>
-      <a href="toets.html"><strong>Kennistoets</strong></a>
-      <a href="#thema-sectie">Thema's</a>
+      <a href="#regelgeving">Wetgeving</a>
+      <a href="#actueel"><span class="lang">Wat verandert er</span><span class="kort" aria-hidden="true">Actueel</span></a>
+      <a href="#kennis-sectie">Kennisbank</a>
+      <a href="toets.html">Kennistoets</a>
     </nav>
+    <div class="toprechts">
+    <a class="navknop" href="#compliance">Contact DFO</a>
     <a class="logo" href="https://www.dfobv.nl/" target="_blank" rel="noopener" aria-label="Bureau DFO — naar dfobv.nl">
       <img src="https://www2.dfobv.nl/assets/files/cropped-logo-dfo-liggend.png" width="180" height="44" alt="DFO — dienstverlening voor financiële ondernemers" onerror="this.parentNode.classList.add('geenimg')">
       <span class="woordmerk" aria-hidden="true">DFO<small>Bureau DFO</small></span>
     </a>
+    </div>
   </div>
 </div>
 
@@ -339,7 +348,7 @@ footer a{color:#fff}
   </div>
 </div>
 
-<section>
+<section id="actueel">
   <div class="wrap">
     <div class="alert">
       <h2>Wat er dit jaar verandert</h2>
