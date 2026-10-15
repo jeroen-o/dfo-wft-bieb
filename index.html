@@ -9,6 +9,7 @@
 <link rel="canonical" href="https://jeroen-o.github.io/dfo-wft-bieb/">
 <meta name="author" content="Bureau DFO">
 <meta name="theme-color" content="#0E5AA7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2230%22 fill=%22%230E5AA7%22/%3E%3Ctext x=%2232%22 y=%2241%22 font-family=%22Arial%22 font-size=%2222%22 font-weight=%22700%22 fill=%22white%22 text-anchor=%22middle%22%3EDFO%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:site_name" content="Bureau DFO">
@@ -190,6 +191,23 @@ section.alt{background:var(--bg-alt);border-top:1px solid var(--border);border-b
 .snel button:hover{background:var(--dfo-blue-dark)}
 .snel button:focus-visible{outline:2px solid var(--dfo-blue-dark);outline-offset:2px}
 
+/* DFO Compliance */
+.compliance{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:22px;align-items:start}
+.compliance .kblok ul{list-style:none;margin:6px 0 16px;padding:0}
+.compliance .kblok li{padding:8px 0 8px 26px;position:relative;font-size:15px}
+.compliance .kblok li::before{content:"";position:absolute;left:4px;top:15px;width:10px;height:10px;border-radius:50%;background:var(--dfo-blue)}
+.compliance .knoppen{display:flex;flex-wrap:wrap;gap:8px}
+.compliance .knoppen .btn{margin-top:0}
+.contactblok{background:var(--dfo-blue);color:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+.contactblok h3{color:#fff;font-size:18px;margin-bottom:8px}
+.contactblok p{margin:0 0 12px;font-size:14.5px;color:#E3EEF9}
+.contactblok a{color:#fff;font-weight:600}
+.contactblok .btn{background:#fff;color:var(--dfo-blue)}
+.contactblok .btn:hover{background:var(--dfo-blue-soft)}
+.verantw{margin-top:22px;background:#fff;border-left:4px solid var(--amber);box-shadow:var(--shadow);border-radius:var(--radius);padding:16px 20px;font-size:14.5px}
+.verantw strong{color:var(--text-strong)}
+@media (max-width:760px){.compliance{grid-template-columns:1fr}}
+
 /* FAQ */
 .faqs{display:grid;gap:10px;max-width:880px}
 .faq{background:#fff;box-shadow:var(--shadow);border-radius:var(--radius)}
@@ -237,6 +255,7 @@ footer a{color:#fff}
     <nav class="topnav" aria-label="Pagina">
       <a href="#regelgeving">Wet- en regelgeving</a>
       <a href="#kennis-sectie">Kennis en praktijk</a>
+      <a href="#compliance">DFO Compliance</a>
       <a href="#toezicht">Toezicht</a>
       <a href="#rekenen">Rekenen</a>
       <a href="#faq">Vragen</a>
@@ -323,7 +342,43 @@ footer a{color:#fff}
   </div>
 </section>
 
-<section id="toezicht">
+<section id="compliance">
+  <div class="wrap">
+    <div class="sectionhead">
+      <h2>DFO Compliance</h2>
+      <p>Voor verdieping en ondersteuning bij Wft- en Wwft-vraagstukken kunt u terecht bij Bureau DFO. Daar vindt u actuele informatie, modeldocumenten en persoonlijke hulp.</p>
+    </div>
+    <div class="compliance">
+      <article class="kblok">
+        <h3>Waar Bureau DFO u bij helpt</h3>
+        <ul>
+          <li>Begeleiding bij het aanvragen van een Wft-vergunning bij de AFM.</li>
+          <li>Antwoord op uw Wft- en compliancevragen via de e-mailhelpdesk van het serviceabonnement.</li>
+          <li>Modeldocumenten voor de verplichte vastleggingen, zoals klachtenprocedure, incidentenregeling, Wwft-beleid en dienstenwijzer.</li>
+          <li>De wekelijkse Nieuwsbrief Wft met actuele ontwikkelingen uit wet- en regelgeving en toezicht.</li>
+          <li>Opleidingen en bijeenkomsten voor medewerkers van het advieskantoor.</li>
+        </ul>
+        <div class="knoppen">
+          <a class="btn" href="https://www.dfobv.nl/product/bureau-dfo-servicepakket/" target="_blank" rel="noopener">Wft Serviceabonnement</a>
+          <a class="btn ghost" href="https://www2.dfobv.nl/documenten-contracten/wft-wwft/" target="_blank" rel="noopener">Modeldocumenten Wft en Wwft</a>
+          <a class="btn ghost" href="https://kennisbank.dfobv.nl/" target="_blank" rel="noopener">DFO Kennisbank</a>
+          <a class="btn ghost" href="https://www.dfobv.nl/ons-team/" target="_blank" rel="noopener">Ons team</a>
+        </div>
+      </article>
+      <aside class="contactblok">
+        <h3>Wilt u het zeker weten?</h3>
+        <p>Twijfelt u over de toepassing van een regel in uw situatie? Neem contact op met Bureau DFO.</p>
+        <p>Telefoon <a href="tel:+31332580480">033 258 04 80</a><br>E-mail <a href="mailto:info@dfobv.nl">info@dfobv.nl</a></p>
+        <a class="btn" href="https://www.dfobv.nl/" target="_blank" rel="noopener">Naar dfobv.nl</a>
+      </aside>
+    </div>
+    <div class="verantw" role="note">
+      <strong>Disclaimer.</strong> De informatie in de WFT Bieb is met zorg samengesteld, maar Bureau DFO is niet verantwoordelijk voor de juistheid, volledigheid of actualiteit van alle informatie op deze pagina en de pagina's waarnaar wordt verwezen. Aan de inhoud kunnen geen rechten worden ontleend. Wilt u het zeker weten? Neem dan contact op met <a href="https://www.dfobv.nl/" target="_blank" rel="noopener">Bureau DFO</a>.
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="toezicht">
   <div class="wrap">
     <div class="sectionhead">
       <h2>Toezicht, geschillen en signalen</h2>
@@ -354,7 +409,7 @@ footer a{color:#fff}
   </div>
 </section>
 
-<section class="alt" id="rekenen">
+<section id="rekenen">
   <div class="wrap">
     <div class="sectionhead">
       <h2>Rekenen en opzoeken</h2>
@@ -411,7 +466,7 @@ footer a{color:#fff}
   <div class="wrap">
     <div>
       <h4>Bureau DFO</h4>
-      <p>De Wel 14–16<br>3871 MV Hoevelaken<br>033 258 04 80<br><a href="https://www.dfobv.nl/" target="_blank" rel="noopener">dfobv.nl</a></p>
+      <p>De Wel 14–16<br>3871 MV Hoevelaken<br><a href="tel:+31332580480">033 258 04 80</a><br><a href="mailto:info@dfobv.nl">info@dfobv.nl</a><br><a href="https://www.dfobv.nl/" target="_blank" rel="noopener">dfobv.nl</a></p>
     </div>
     <div>
       <h4>Bronnen</h4>
@@ -425,12 +480,12 @@ footer a{color:#fff}
     </div>
     <div>
       <h4>Mist er iets?</h4>
-      <p>Ontbreekt een regeling of klopt een verwijzing niet? Geef het door, dan komt het in de volgende versie.</p>
+      <p>Ontbreekt een regeling of klopt een verwijzing niet? <a href="mailto:info@dfobv.nl?subject=WFT%20Bieb%3A%20aanvulling%20of%20correctie">Geef het door</a>, dan komt het in de volgende versie.</p>
     </div>
   </div>
   <div class="disclaimer">
     <div class="wrap">
-      <p>De WFT Bieb verwijst naar openbare bronnen en vormt geen advies. Wetteksten wijzigen; controleer bij elk dossier de versie die op dat moment geldt. Aan de inhoud van deze pagina kunnen geen rechten worden ontleend.</p>
+      <p>De WFT Bieb verwijst naar openbare bronnen en vormt geen advies. Bureau DFO is niet verantwoordelijk voor de juistheid en volledigheid van alle informatie. Wetteksten wijzigen; controleer bij elk dossier de versie die op dat moment geldt. Aan de inhoud van deze pagina kunnen geen rechten worden ontleend. Wilt u het zeker weten? Neem contact op met Bureau DFO via 033 258 04 80 of <a href="mailto:info@dfobv.nl">info@dfobv.nl</a>.</p>
     </div>
   </div>
 </footer>

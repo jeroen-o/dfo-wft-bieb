@@ -2,7 +2,11 @@
 
 > Doorzoekbare bibliotheek van wet- en regelgeving voor financiële dienstverleners in Nederland (Wft, Wwft, hypothecair en consumptief krediet, fiscaal, pensioen, sociale zekerheid). Elke regeling linkt naar de officiële tekst op wetten.overheid.nl of EUR-Lex. Samengesteld door Bureau DFO, Hoevelaken. Peildatum: 15 oktober 2026.
 
-De WFT Bieb verwijst naar openbare bronnen en vormt geen advies. Controleer bij elk dossier de geldende versie van de wettekst.
+De WFT Bieb verwijst naar openbare bronnen en vormt geen advies. Bureau DFO is niet verantwoordelijk voor de juistheid en volledigheid van alle informatie; controleer bij elk dossier de geldende versie van de wettekst. Voor zekerheid over Wft- en compliancevragen: neem contact op met Bureau DFO (033 258 04 80, info@dfobv.nl, https://www.dfobv.nl/).
+
+## DFO Compliance
+
+Bureau DFO ondersteunt financiële dienstverleners bij Wft-vergunningaanvragen, beantwoordt Wft- en compliancevragen via de helpdesk van het [Wft Serviceabonnement](https://www.dfobv.nl/product/bureau-dfo-servicepakket/), levert [modeldocumenten Wft en Wwft](https://www2.dfobv.nl/documenten-contracten/wft-wwft/) en publiceert de wekelijkse Nieuwsbrief Wft via de [DFO Kennisbank](https://kennisbank.dfobv.nl/).
 
 ## Wft & toezicht
 
