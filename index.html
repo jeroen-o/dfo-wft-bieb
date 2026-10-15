@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WFT Bieb</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+<style>
+/* DFO-huisstijl: blauwe kop- en voetband, witte kaarten met lichtblauwe rand op grijsblauw vlak */
+:root{
+  --dfo-blue:#0F5BA9;
+  --dfo-blue-dark:#0A4683;
+  --dfo-blue-soft:#E8F0F9;
+  --border:#BBD3EA;
+  --bg:#FFFFFF;
+  --bg-alt:#F2F6FA;
+  --text:#4A4A4A;
+  --text-strong:#2C3A47;
+  --heading:#1B5FA9;
+  --amber:#B06E00;
+  --amber-soft:#FDF2DC;
+  --red:#A52A21;
+  --red-soft:#FBE9E7;
+  --green:#1B6B3A;
+  --green-soft:#E6F3EB;
+  --radius:4px;
+  --maxw:1180px;
+  --font:"Poppins","Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{color:var(--heading);font-weight:600;text-wrap:balance;margin:0}
+a{color:var(--dfo-blue)}
+
+/* Kopband */
+.masthead{background:var(--dfo-blue);color:#fff}
+.masthead .wrap{padding-block:32px 36px}
+.masthead h1{color:#fff;font-size:34px;line-height:1.2;font-weight:700;letter-spacing:-.01em}
+.masthead p{margin:10px 0 0;color:#D7E6F6;font-size:17px;max-width:62ch}
+.eyebrow{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A9CBEC;font-weight:600;margin-bottom:10px}
+.peildatum{margin-top:18px;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:var(--radius);padding:7px 12px;font-size:13px;color:#fff}
+
+/* Zoek- en filterbalk */
+.toolbar{background:var(--bg-alt);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20}
+.toolbar .wrap{padding-block:16px}
+.searchrow{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.searchfield{flex:1 1 320px;min-width:0;position:relative}
+.searchfield input{
+  width:100%;font-family:var(--font);font-size:16px;color:var(--text-strong);
+  padding:12px 14px 12px 42px;border:1px solid var(--border);border-radius:var(--radius);background:#fff;
+}
+.searchfield input:focus{outline:2px solid var(--dfo-blue);outline-offset:1px;border-color:var(--dfo-blue)}
+.searchfield svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:18px;height:18px;fill:none;stroke:var(--dfo-blue);stroke-width:2}
+.count{font-size:14px;color:var(--text);white-space:nowrap;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{
+  font-family:var(--font);font-size:13px;font-weight:500;cursor:pointer;
+  background:#fff;color:var(--dfo-blue);border:1px solid var(--border);
+  border-radius:var(--radius);padding:7px 13px;line-height:1.2;
+}
+.chip:hover{background:var(--dfo-blue-soft)}
+.chip[aria-pressed="true"]{background:var(--dfo-blue);border-color:var(--dfo-blue);color:#fff}
+.chip:focus-visible{outline:2px solid var(--dfo-blue-dark);outline-offset:2px}
+
+/* Attentieblok */
+.alert{background:var(--amber-soft);border:1px solid #E8C98A;border-radius:var(--radius);padding:18px 20px;margin-top:28px}
+.alert h2{font-size:17px;color:#8A5600}
+.alert ul{margin:10px 0 0;padding-left:20px}
+.alert li{margin-bottom:6px;font-size:15px}
+.alert li strong{color:var(--text-strong)}
+
+/* Secties */
+section{padding-block:36px}
+section.alt{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sectionhead{margin-bottom:20px}
+.sectionhead h2{font-size:23px}
+.sectionhead p{margin:6px 0 0;font-size:15px;max-width:70ch}
+
+/* Kaartgrid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+  padding:18px;display:flex;flex-direction:column;gap:9px;min-width:0;
+}
+.card .afk{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dfo-blue)}
+.card h3{font-size:16px;line-height:1.35;color:var(--text-strong);font-weight:600}
+.card p{margin:0;font-size:14px;line-height:1.55}
+.card .meta{margin-top:auto;padding-top:12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.badge{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:2px;white-space:nowrap}
+.badge.thema{background:var(--dfo-blue-soft);color:var(--dfo-blue-dark)}
+.badge.jaarlijks{background:var(--amber-soft);color:var(--amber)}
+.badge.nieuw{background:var(--green-soft);color:var(--green)}
+.badge.check{background:var(--red-soft);color:var(--red)}
+.btn{
+  display:inline-block;background:var(--dfo-blue);color:#fff;text-decoration:none;
+  font-size:13px;font-weight:500;padding:9px 14px;border-radius:var(--radius);margin-top:4px;align-self:flex-start;
+}
+.btn:hover{background:var(--dfo-blue-dark)}
+.btn.ghost{background:#fff;color:var(--dfo-blue);border:1px solid var(--dfo-blue)}
+.btn.ghost:hover{background:var(--dfo-blue-soft)}
+.btn:focus-visible{outline:2px solid var(--dfo-blue-dark);outline-offset:2px}
+.nolink{font-size:13px;color:var(--red);font-weight:500}
+.empty{padding:40px 0;text-align:center;color:var(--text)}
+
+/* Bronnenkaarten */
+.sources{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.source{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:10px}
+.source h3{font-size:17px}
+.source p{margin:0;font-size:14px}
+
+/* Voetband */
+footer{background:var(--dfo-blue-dark);color:#D7E6F6}
+footer .wrap{padding-block:30px 34px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+footer h4{color:#fff;font-size:14px;margin:0 0 8px;font-weight:600}
+footer p,footer li{font-size:13.5px;line-height:1.65;margin:0}
+footer ul{list-style:none;padding:0;margin:0}
+footer a{color:#fff}
+.disclaimer{border-top:1px solid rgba(255,255,255,.22)}
+.disclaimer .wrap{display:block;padding-block:16px 22px}
+.disclaimer p{font-size:12.5px;color:#BBD3EA;max-width:92ch}
+
+@media (max-width:600px){
+  .masthead h1{font-size:27px}
+  .masthead .wrap{padding-block:26px 28px}
+  .grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <span class="eyebrow">Bureau DFO</span>
+    <h1>WFT Bieb</h1>
+    <p>Alle wet- en regelgeving voor de financiële dienstverlening op één plek: van Wft en Wwft tot fiscaal, pensioen en sociale zekerheid. Zoek op naam, afkorting of thema.</p>
+    <span class="peildatum" id="peildatum">Peildatum 15 oktober 2026</span>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap">
+    <div class="searchrow">
+      <div class="searchfield">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="search" id="zoek" placeholder="Zoek op wet, afkorting of onderwerp — bijvoorbeeld &quot;hypothecair krediet&quot;" aria-label="Zoek in de WFT Bieb">
+      </div>
+      <span class="count" id="teller"></span>
+    </div>
+    <div class="chips" id="filters" role="group" aria-label="Filter op thema"></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="alert">
+      <h2>Wat er dit jaar verandert</h2>
+      <ul>
+        <li><strong>CCD II — 20 november 2026.</strong> De herziene richtlijn consumentenkrediet gaat gelden; de Nederlandse implementatiewet is nog in voorbereiding. Aanbieders van BNPL, uitgestelde-betaalkaarten en huur of lease met koopoptie moeten toetsen of zij vergunningplichtig worden onder art. 2:60 Wft. Bemiddelaars in nieuw onder toezicht gebrachte kredietvormen hebben een vergunning nodig onder art. 2:80 Wft.</li>
+        <li><strong>EU-witwaspakket.</strong> AMLR en AMLD6 komen boven op de huidige Wwft; de poortwachtersrol van adviseurs verandert mee.</li>
+        <li><strong>AI-verordening en DORA.</strong> Gefaseerde toepassing raakt advieskantoren via software, modellen en uitbesteding.</li>
+        <li><strong>TRHK en NHG Voorwaarden &amp; Normen.</strong> Wijzigen jaarlijks per 1 januari — werk met de jaarversie, nooit met een kale link.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sectionhead">
+      <h2>Wet- en regelgeving</h2>
+      <p>Elke verwijzing gaat naar de geldende tekst op wetten.overheid.nl. Controleer bij normen die per jaar wijzigen altijd de versiedatum bovenaan de wettekst.</p>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="leeg" hidden>Geen resultaten. Pas de zoekterm aan of kies een ander thema.</div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="sectionhead">
+      <h2>Toezicht, geschillen en signalen</h2>
+      <p>Naast de wettekst zelf bepalen toezichthouder en geschilleninstantie hoe een norm in de praktijk uitpakt.</p>
+    </div>
+    <div class="sources">
+      <article class="source">
+        <h3>AFM — adviseurs, bemiddelaars en gevolmachtigden</h3>
+        <p>Vergunningplicht, vakbekwaamheid, provisieregels, zorgplicht en doorlopend toezicht. De sectorpagina's van de AFM leggen uit hoe de toezichthouder de Wft-normen toepast.</p>
+        <a class="btn" href="https://www.afm.nl/nl-nl/sector/adviseurs-bemiddelaars" target="_blank" rel="noopener">Naar de AFM</a>
+      </article>
+      <article class="source">
+        <h3>Kifid — uitspraken</h3>
+        <p>Het uitsprakenregister laat zien waar de zorgplicht in concrete dossiers op stukloopt. Doorzoekbaar op categorie, periode en uitspraaknummer; uitspraken verschijnen als pdf.</p>
+        <a class="btn" href="https://www.kifid.nl/kifid-kennis-en-uitspraken/uitspraken/" target="_blank" rel="noopener">Naar het register</a>
+      </article>
+      <article class="source">
+        <h3>DFO Signalen</h3>
+        <p>De wekelijkse nieuwsbrief met signalen uit de markt, modelteksten en praktijkanalyses voor het advieskantoor. Het archief gaat jaren terug.</p>
+        <a class="btn" href="https://www.dfosignalen.nl/" target="_blank" rel="noopener">Naar DFO Signalen</a>
+      </article>
+      <article class="source">
+        <h3>NHG — Voorwaarden &amp; Normen</h3>
+        <p>De normen wijzigen jaarlijks per 1 januari en gelden per versiedatum van de offerte. Werk altijd met de jaarversie die op het dossier van toepassing is.</p>
+        <a class="btn" href="https://www.nhg.nl/" target="_blank" rel="noopener">Naar NHG</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sectionhead">
+      <h2>Rekenen en opzoeken</h2>
+      <p>Hulpmiddelen die in een adviesgesprek het vaakst nodig zijn.</p>
+    </div>
+    <div class="sources">
+      <article class="source">
+        <h3>Financieringslastpercentages</h3>
+        <p>De tabellen staan in paragraaf 4 van de Tijdelijke regeling hypothecair krediet en worden elk jaar vervangen.</p>
+        <a class="btn ghost" href="https://wetten.overheid.nl/BWBR0032503/#Paragraaf4" target="_blank" rel="noopener">Open paragraaf 4 TRHK</a>
+      </article>
+      <article class="source">
+        <h3>Jaarruimte en lijfrentepremie</h3>
+        <p>De rekenhulp van de Belastingdienst berekent de aftrekbare jaarruimte over het voorgaande kalenderjaar.</p>
+        <a class="btn ghost" href="https://www.belastingdienst.nl/" target="_blank" rel="noopener">Naar de Belastingdienst</a>
+      </article>
+      <article class="source">
+        <h3>Overlevingstafels</h3>
+        <p>Sterftekansen en levensverwachting per leeftijd en geslacht, via StatLine van het CBS.</p>
+        <a class="btn ghost" href="https://www.cbs.nl/" target="_blank" rel="noopener">Naar het CBS</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>Bureau DFO</h4>
+      <p>De Wel 14–16<br>3871 MV Hoevelaken<br>033 258 04 80<br><a href="https://www.dfobv.nl/" target="_blank" rel="noopener">dfobv.nl</a></p>
+    </div>
+    <div>
+      <h4>Bronnen</h4>
+      <ul>
+        <li><a href="https://wetten.overheid.nl/" target="_blank" rel="noopener">wetten.overheid.nl</a></li>
+        <li><a href="https://www.afm.nl/" target="_blank" rel="noopener">afm.nl</a></li>
+        <li><a href="https://www.kifid.nl/" target="_blank" rel="noopener">kifid.nl</a></li>
+        <li><a href="https://www.dfosignalen.nl/" target="_blank" rel="noopener">dfosignalen.nl</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Mist er iets?</h4>
+      <p>Ontbreekt een regeling of klopt een verwijzing niet? Geef het door, dan komt het in de volgende versie.</p>
+    </div>
+  </div>
+  <div class="disclaimer">
+    <div class="wrap">
+      <p>De WFT Bieb verwijst naar openbare bronnen en vormt geen advies. Wetteksten wijzigen; controleer bij elk dossier de versie die op dat moment geldt. Aan de inhoud van deze pagina kunnen geen rechten worden ontleend.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const THEMAS = {
+  wft:"Wft & toezicht",
+  krediet:"Krediet & hypotheek",
+  integriteit:"Wwft & integriteit",
+  pensioen:"Pensioen",
+  fiscaal:"Fiscaal",
+  familie:"Familie & relatie",
+  erfrecht:"Erfrecht",
+  sociaal:"Sociale zekerheid",
+  toeslagen:"Toeslagen",
+  wonen:"Wonen & huur",
+  privacy:"Privacy & technologie",
+  buitenland:"Buitenland",
+  burgerlijk:"Burgerlijk recht"
+};
+
+// flag: 'jaarlijks' = wijzigt per 1 januari | 'nieuw' = nieuw of op komst | 'check' = verwijzing nog te verifiëren
+const WETTEN = [
+  {t:"Wet op het financieel toezicht",a:"Wft",b:"BWBR0020368",c:"wft",d:"Kernwet voor vergunningplicht, vakbekwaamheid, zorgplicht, provisieregels en doorlopend toezicht."},
+  {t:"Besluit Gedragstoezicht financiële ondernemingen Wft",a:"BGfo",b:"BWBR0020421",c:"wft",d:"Werkt de gedragsnormen uit: dienstverleningsdocument, passend advies, beloningsregels en vakbekwaamheid."},
+  {t:"Nadere regeling gedragstoezicht financiële ondernemingen Wft",a:"Nrgfo",b:"",c:"wft",d:"Technische uitwerking van het BGfo, onder meer voor informatieverstrekking en kostentransparantie.",flag:"check"},
+  {t:"Vrijstellingsregeling Wft",a:"",b:"",c:"wft",d:"Bepaalt welke partijen en activiteiten buiten de vergunningplicht vallen.",flag:"check"},
+  {t:"Besluit markttoegang financiële ondernemingen Wft",a:"Bmfo",b:"",c:"wft",d:"Eisen bij het aanvragen van een vergunning en bij markttoetreding.",flag:"check"},
+  {t:"Besluit prudentiële regels Wft",a:"Bpr",b:"",c:"wft",d:"Prudentiële eisen, onder meer aan beheerste en integere bedrijfsvoering.",flag:"check"},
+
+  {t:"Tijdelijke regeling hypothecair krediet",a:"TRHK",b:"BWBR0032503",c:"krediet",d:"Leennormen voor hypothecair krediet: financieringslastpercentages en de verhouding lening-waarde. Wijzigt elk jaar per 1 januari.",flag:"jaarlijks"},
+  {t:"Wet op het consumentenkrediet",a:"WCK",b:"BWBR0004815",c:"krediet",d:"Regelt consumptief krediet voor zover dat niet onder de Wft valt."},
+  {t:"Herziene richtlijn consumentenkrediet",a:"CCD II",b:"",c:"krediet",d:"Geldt vanaf 20 november 2026 en brengt onder meer BNPL en lease met koopoptie onder toezicht. De Nederlandse implementatiewet is in voorbereiding.",flag:"nieuw",url:"https://www.afm.nl/nl-nl/sector/actueel/2026/jun/sb-ccd2-vraag-vergunning-aan"},
+
+  {t:"Wet ter voorkoming van witwassen en financieren van terrorisme",a:"Wwft",b:"BWBR0024281",c:"integriteit",d:"Cliëntenonderzoek, risicobeoordeling en meldplicht ongebruikelijke transacties voor adviseurs en bemiddelaars."},
+  {t:"Uitvoeringsbesluit Wwft 2018",a:"",b:"BWBR0041193",c:"integriteit",d:"Werkt het cliëntenonderzoek en de UBO-verplichtingen uit."},
+  {t:"EU-witwasverordening",a:"AMLR",b:"",c:"integriteit",d:"Europees anti-witwaspakket met rechtstreeks werkende regels en een Europese toezichthouder, komt boven op de huidige Wwft.",flag:"nieuw"},
+
+  {t:"Uitvoeringswet Algemene verordening gegevensbescherming",a:"UAVG",b:"BWBR0040940",c:"privacy",d:"Nederlandse uitwerking van de AVG; bepaalt onder meer wanneer bijzondere persoonsgegevens verwerkt mogen worden."},
+  {t:"AI-verordening",a:"AI Act",b:"",c:"privacy",d:"Europese regels voor ontwikkeling en gebruik van AI-systemen, gefaseerd van toepassing. Raakt advieskantoren via software en modellen.",flag:"nieuw"},
+  {t:"Digital Operational Resilience Act",a:"DORA",b:"",c:"privacy",d:"Europese eisen aan digitale weerbaarheid, ICT-risicobeheer en uitbesteding in de financiële sector.",flag:"nieuw"},
+
+  {t:"Grondwet",a:"",b:"BWBR0001840",c:"burgerlijk",d:"Grondrechten en de inrichting van de staat."},
+  {t:"Burgerlijk Wetboek Boek 1 — Personen- en familierecht",a:"BW 1",b:"BWBR0002656",c:"familie",d:"Huwelijk, geregistreerd partnerschap, huwelijksvermogensrecht, gezag en curatele."},
+  {t:"Burgerlijk Wetboek Boek 2 — Rechtspersonen",a:"BW 2",b:"BWBR0003045",c:"burgerlijk",d:"Rechtsvormen, bestuur en aansprakelijkheid van rechtspersonen."},
+  {t:"Burgerlijk Wetboek Boek 3 — Vermogensrecht",a:"BW 3",b:"BWBR0005291",c:"burgerlijk",d:"Algemene vermogensrechtelijke begrippen: goederen, rechtshandelingen, volmacht en verjaring."},
+  {t:"Burgerlijk Wetboek Boek 4 — Erfrecht",a:"BW 4",b:"BWBR0012701",c:"erfrecht",d:"Wettelijke verdeling, legitieme portie, testamenten en vereffening van de nalatenschap."},
+  {t:"Burgerlijk Wetboek Boek 5 — Zakelijke rechten",a:"BW 5",b:"BWBR0005288",c:"burgerlijk",d:"Eigendom, erfdienstbaarheden, erfpacht, opstal en appartementsrechten."},
+  {t:"Burgerlijk Wetboek Boek 6 — Verbintenissenrecht",a:"BW 6",b:"BWBR0005289",c:"burgerlijk",d:"Nakoming, wanprestatie, onrechtmatige daad en algemene voorwaarden."},
+  {t:"Burgerlijk Wetboek Boek 7 — Bijzondere overeenkomsten",a:"BW 7",b:"BWBR0005290",c:"burgerlijk",d:"Koop, opdracht, verzekering, huur en arbeidsovereenkomst."},
+  {t:"Burgerlijk Wetboek Boek 7A — Bijzondere overeenkomsten, vervolg",a:"BW 7A",b:"BWBR0006000",c:"burgerlijk",d:"Resterende benoemde overeenkomsten uit het oude recht."},
+  {t:"Burgerlijk Wetboek Boek 10 — Internationaal privaatrecht",a:"BW 10",b:"BWBR0030068",c:"buitenland",d:"Welk recht geldt bij grensoverschrijdende situaties, onder meer bij huwelijksvermogen en erfopvolging."},
+  {t:"Faillissementswet",a:"Fw",b:"BWBR0001860",c:"burgerlijk",d:"Faillissement, surseance en de wettelijke schuldsanering natuurlijke personen."},
+  {t:"Wetboek van Koophandel",a:"WvK",b:"BWBR0001838",c:"burgerlijk",d:"Resterende handelsrechtelijke bepalingen."},
+  {t:"Wet arbeid en zorg",a:"Wazo",b:"BWBR0013008",c:"sociaal",d:"Verlofvormen en uitkeringen rond zwangerschap, geboorte en zorg."},
+
+  {t:"Algemene wet inzake rijksbelastingen",a:"AWR",b:"BWBR0002320",c:"fiscaal",d:"Formeel belastingrecht: aangifte, aanslag, bezwaar en navordering."},
+  {t:"Uitvoeringsregeling Algemene wet inzake rijksbelastingen 1994",a:"",b:"BWBR0006736",c:"fiscaal",d:"Uitwerking van de formele verplichtingen uit de AWR."},
+  {t:"Wet inkomstenbelasting 2001",a:"Wet IB 2001",b:"BWBR0011353",c:"fiscaal",d:"Eigenwoningregeling, hypotheekrenteaftrek, box 3 en lijfrenteaftrek."},
+  {t:"Invoeringswet Wet inkomstenbelasting 2001",a:"",b:"BWBR0011354",c:"fiscaal",d:"Overgangsrecht, onder meer voor kapitaalverzekeringen eigen woning."},
+  {t:"Uitvoeringsbesluit inkomstenbelasting 2001",a:"",b:"BWBR0012066",c:"fiscaal",d:"Uitwerking van begrippen uit de Wet IB 2001."},
+  {t:"Uitvoeringsregeling inkomstenbelasting 2001",a:"",b:"BWBR0012067",c:"fiscaal",d:"Nadere regels, onder meer voor de eigenwoningschuld en de aflossingsstand."},
+  {t:"Wet rechtsherstel box 3",a:"",b:"BWBR0047699",c:"fiscaal",d:"Herstelwetgeving na het Kerstarrest over de forfaitaire rendementsheffing."},
+  {t:"Overbruggingswet box 3",a:"",b:"",c:"fiscaal",d:"Tijdelijke heffing in box 3 op basis van werkelijke vermogenssamenstelling, tot een nieuw stelsel in werking treedt.",flag:"check"},
+  {t:"Wet op de loonbelasting 1964",a:"Wet LB",b:"BWBR0002471",c:"fiscaal",d:"Loonheffing, pensioenregelingen in de loonsfeer en de werkkostenregeling."},
+  {t:"Uitvoeringsbesluit loonbelasting 1965",a:"",b:"BWBR0002489",c:"fiscaal",d:"Uitwerking van de Wet LB."},
+  {t:"Uitvoeringsregeling loonbelasting 2011",a:"",b:"BWBR0028965",c:"fiscaal",d:"Nadere regels over loonbestanddelen en vrijstellingen."},
+  {t:"Wet op de vennootschapsbelasting 1969",a:"Vpb",b:"BWBR0002672",c:"fiscaal",d:"Winstbelasting voor rechtspersonen; relevant bij de dga en de bv-structuur."},
+  {t:"Uitvoeringsbesluit vennootschapsbelasting 1971",a:"",b:"BWBR0002741",c:"fiscaal",d:"Uitwerking van de Vpb."},
+  {t:"Uitvoeringsbeschikking vennootschapsbelasting 1971",a:"",b:"BWBR0002784",c:"fiscaal",d:"Nadere regels bij de Vpb."},
+  {t:"Wet op de dividendbelasting 1965",a:"",b:"BWBR0002515",c:"fiscaal",d:"Heffing over uitgekeerd dividend."},
+  {t:"Wet op belastingen van rechtsverkeer",a:"WBR",b:"BWBR0002740",c:"fiscaal",d:"Overdrachtsbelasting en assurantiebelasting."},
+  {t:"Uitvoeringsbesluit belastingen van rechtsverkeer",a:"",b:"BWBR0002758",c:"fiscaal",d:"Uitwerking van vrijstellingen en tarieven, onder meer de startersvrijstelling."},
+  {t:"Successiewet 1956",a:"SW",b:"BWBR0002226",c:"erfrecht",d:"Erfbelasting en schenkbelasting, inclusief vrijstellingen en bedrijfsopvolging."},
+  {t:"Uitvoeringsbesluit Successiewet 1956",a:"",b:"BWBR0002227",c:"erfrecht",d:"Uitwerking van de Successiewet."},
+  {t:"Uitvoeringsregeling schenk- en erfbelasting",a:"",b:"BWBR0027018",c:"erfrecht",d:"Nadere regels over aangifte en waardering."},
+  {t:"Natuurschoonwet 1928",a:"NSW",b:"BWBR0001939",c:"fiscaal",d:"Fiscale faciliteiten voor landgoederen."},
+  {t:"Registratiewet 1970",a:"",b:"BWBR0002739",c:"fiscaal",d:"Registratie van akten en onderhandse stukken."},
+  {t:"Invorderingswet 1990",a:"IW",b:"BWBR0004770",c:"fiscaal",d:"Inning van belastingschulden, aansprakelijkheid en betalingsregelingen."},
+  {t:"Uitvoeringsbesluit Invorderingswet 1990",a:"",b:"BWBR0004772",c:"fiscaal",d:"Uitwerking van de invordering."},
+  {t:"Uitvoeringsregeling Invorderingswet 1990",a:"",b:"BWBR0004766",c:"fiscaal",d:"Nadere regels, onder meer over uitstel van betaling."},
+  {t:"Wet waardering onroerende zaken",a:"Wet WOZ",b:"BWBR0007119",c:"wonen",d:"Waardebepaling van onroerende zaken; basis voor eigenwoningforfait en lokale heffingen."},
+  {t:"Uitvoeringsregeling uitgezonderde objecten Wet WOZ",a:"",b:"BWBR0007142",c:"wonen",d:"Welke objecten buiten de WOZ-waardering blijven."},
+  {t:"Besluit voorkoming dubbele belasting 2001",a:"Bvdb",b:"BWBR0012095",c:"buitenland",d:"Voorkoming van dubbele heffing bij inkomen of vermogen in het buitenland."},
+  {t:"Besluit voorkoming dubbele belasting BES",a:"",b:"BWBR0029674",c:"buitenland",d:"Regeling voor Bonaire, Sint Eustatius en Saba."},
+  {t:"Besluit 30%-regeling extraterritoriale werknemers",a:"",b:"BWBR0033855",c:"buitenland",d:"Onbelaste vergoeding voor ingekomen werknemers; raakt het toetsinkomen bij hypotheekadvies."},
+  {t:"Besluit betaalpauze rente en aflossing eigenwoningschuld",a:"",b:"BWBR0045648",c:"fiscaal",d:"Voorwaarden waaronder een betaalpauze de renteaftrek niet aantast."},
+  {t:"Verzamelbesluit kapitaalverzekeringen, SEW en BEW",a:"",b:"BWBR0050034",c:"fiscaal",d:"Beleidsbesluit over KEW, SEW en BEW, inclusief overgangsrecht en afkoop."},
+
+  {t:"Pensioenwet",a:"PW",b:"BWBR0020809",c:"pensioen",d:"Opbouw, uitvoering en communicatie van tweedepijlerpensioen."},
+  {t:"Wet toekomst pensioenen",a:"Wtp",b:"",c:"pensioen",d:"Overgang naar het vernieuwde pensioenstelsel met premieregelingen; bepalend voor transitie en nabestaandendekking.",flag:"check"},
+  {t:"Besluit uitvoering Pensioenwet en Wet verplichte beroepspensioenregeling",a:"",b:"BWBR0020892",c:"pensioen",d:"Uitwerking van de Pensioenwet."},
+  {t:"Regeling Pensioenwet en Wet verplichte beroepspensioenregeling",a:"",b:"BWBR0020917",c:"pensioen",d:"Nadere regels bij de Pensioenwet."},
+  {t:"Regeling berekening waarde-overdracht",a:"",b:"",c:"pensioen",d:"Rekenregels bij individuele waarde-overdracht van pensioen.",flag:"check"},
+  {t:"Wet verevening pensioenrechten bij scheiding",a:"Wvps",b:"BWBR0006641",c:"pensioen",d:"Verdeling van ouderdomspensioen bij scheiding; geldt sinds 1 mei 1995. De beoogde opvolger is niet ingevoerd."},
+  {t:"Regeling pensioenberekening deelnemingsjaren voor 1 mei 1995",a:"",b:"BWBR0007144",c:"pensioen",d:"Rekenregels voor pensioenjaren van vóór de Wvps."},
+
+  {t:"Algemene wet inkomensafhankelijke regelingen",a:"AWIR",b:"BWBR0018472",c:"toeslagen",d:"Gemeenschappelijk kader voor alle toeslagen: toetsingsinkomen, partnerbegrip en terugvordering."},
+  {t:"Uitvoeringsbesluit AWIR",a:"",b:"BWBR0018590",c:"toeslagen",d:"Uitwerking van het toeslagenkader."},
+  {t:"Uitvoeringsregeling AWIR",a:"",b:"BWBR0019237",c:"toeslagen",d:"Nadere regels over aanvraag en vaststelling."},
+  {t:"Wet kinderopvang",a:"",b:"BWBR0017252",c:"toeslagen",d:"Recht op en hoogte van de kinderopvangtoeslag."},
+  {t:"Besluit kinderopvangtoeslag",a:"",b:"BWBR0017321",c:"toeslagen",d:"Maximum uurprijzen en toetsingstabellen; wijzigt jaarlijks.",flag:"jaarlijks"},
+  {t:"Wet op het kindgebonden budget",a:"WKB",b:"BWBR0022751",c:"toeslagen",d:"Inkomensafhankelijke bijdrage in de kosten van kinderen."},
+  {t:"Wet op de zorgtoeslag",a:"",b:"BWBR0018451",c:"toeslagen",d:"Tegemoetkoming in de premie zorgverzekering."},
+  {t:"Wet op de huurtoeslag",a:"",b:"BWBR0008659",c:"wonen",d:"Voorwaarden en berekening van de huurtoeslag."},
+  {t:"Besluit op de huurtoeslag",a:"",b:"BWBR0008763",c:"wonen",d:"Uitwerking van de huurtoeslagberekening."},
+
+  {t:"Wet minimumloon en minimumvakantiebijslag",a:"WML",b:"BWBR0002638",c:"sociaal",d:"Minimumuurloon en vakantiebijslag; basis voor veel inkomensafhankelijke normen."},
+  {t:"Wet studiefinanciering 2000",a:"WSF",b:"BWBR0011453",c:"sociaal",d:"Studiefinanciering en studieschuld; de schuld telt mee bij de leencapaciteit."},
+  {t:"Werkloosheidswet",a:"WW",b:"BWBR0004045",c:"sociaal",d:"Recht, hoogte en duur van de WW-uitkering."},
+  {t:"Toeslagenwet",a:"TW",b:"BWBR0004043",c:"sociaal",d:"Aanvulling op een uitkering tot het sociaal minimum."},
+  {t:"Wet financiering sociale verzekeringen",a:"Wfsv",b:"BWBR0017745",c:"sociaal",d:"Premieheffing voor de werknemers- en volksverzekeringen."},
+  {t:"Algemene Ouderdomswet",a:"AOW",b:"BWBR0002221",c:"sociaal",d:"AOW-leeftijd en opbouw; bepalend voor het inkomen na pensionering."},
+  {t:"Algemene nabestaandenwet",a:"Anw",b:"BWBR0007795",c:"sociaal",d:"Nabestaandenuitkering; belangrijk bij de overlijdensrisicoanalyse."},
+  {t:"Algemene Kinderbijslagwet",a:"AKW",b:"BWBR0002368",c:"sociaal",d:"Kinderbijslag per leeftijdsgroep."},
+  {t:"Besluit uitvoering kinderbijslag",a:"",b:"BWBR0035261",c:"sociaal",d:"Uitwerking van de AKW."},
+  {t:"Ziektewet",a:"ZW",b:"BWBR0001888",c:"sociaal",d:"Uitkering bij ziekte zonder werkgever, onder meer voor uitzendkrachten en na einde dienstverband."},
+  {t:"Wet werk en inkomen naar arbeidsvermogen",a:"WIA",b:"BWBR0019057",c:"sociaal",d:"WGA en IVA bij langdurige arbeidsongeschiktheid; kern van de inkomensanalyse."},
+  {t:"Wet arbeidsongeschiktheidsvoorziening jonggehandicapten",a:"Wajong",b:"BWBR0008657",c:"sociaal",d:"Voorziening voor jonggehandicapten."},
+  {t:"Algemeen inkomensbesluit socialezekerheidswetten",a:"",b:"BWBR0029368",c:"sociaal",d:"Welk inkomen wordt verrekend met een uitkering."},
+  {t:"Dagloonbesluit werknemersverzekeringen",a:"",b:"BWBR0033486",c:"sociaal",d:"Berekening van het dagloon voor WW, ZW en WIA."},
+  {t:"Wet inkomensvoorziening oudere werklozen",a:"IOW",b:"BWBR0024394",c:"sociaal",d:"Vervolguitkering voor oudere werklozen na de WW."},
+  {t:"Wet inkomensvoorziening oudere en deels arbeidsongeschikte werklozen",a:"IOAW",b:"BWBR0004044",c:"sociaal",d:"Inkomensvoorziening zonder vermogenstoets voor oudere werklozen."},
+  {t:"Wet inkomensvoorziening oudere en gedeeltelijk arbeidsongeschikte gewezen zelfstandigen",a:"IOAZ",b:"BWBR0004163",c:"sociaal",d:"Vergelijkbare voorziening voor gestopte zelfstandigen."},
+  {t:"Participatiewet",a:"",b:"BWBR0015703",c:"sociaal",d:"Bijstand, vermogensgrenzen en de kostendelersnorm."},
+  {t:"Zorgverzekeringswet",a:"Zvw",b:"BWBR0018450",c:"sociaal",d:"Verzekeringsplicht, basispakket en inkomensafhankelijke bijdrage."},
+  {t:"Regeling zorgverzekering",a:"",b:"BWBR0018715",c:"sociaal",d:"Uitwerking van pakket, eigen risico en bijdragen."},
+  {t:"Regeling aanwijzing directeur-grootaandeelhouder 2016",a:"",b:"BWBR0036819",c:"sociaal",d:"Wanneer een dga niet verzekerd is voor de werknemersverzekeringen."},
+
+  {t:"Wet aanpassing wettelijke gemeenschap van goederen 2012",a:"",b:"BWBR0029955",c:"familie",d:"Overgangsrecht voor huwelijken van vóór 2012."},
+  {t:"Wet beperking gemeenschap van goederen 2018",a:"",b:"BWBR0039474",c:"familie",d:"Beperkte gemeenschap voor huwelijken vanaf 1 januari 2018; bepalend bij scheiding en eigen woning."},
+  {t:"Wet herziening partneralimentatie 2020",a:"",b:"BWBR0042499",c:"familie",d:"Verkorting van de alimentatieduur; raakt het toetsinkomen na scheiding."},
+  {t:"Besluit overgangsrecht transitievergoeding",a:"",b:"BWBR0036595",c:"sociaal",d:"Overgangsregels bij de transitievergoeding."},
+  {t:"Europese Erfrechtverordening 650/2012",a:"",b:"",c:"buitenland",d:"Bepaalt welk erfrecht geldt bij een nalatenschap met een buitenlandcomponent.",url:"https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=CELEX%3A32012R0650"},
+  {t:"Wet betaalbare huur",a:"",b:"",c:"wonen",d:"Uitbreiding van het puntenstelsel naar de middenhuur; raakt rendement en financierbaarheid van verhuurd vastgoed.",flag:"check"},
+  {t:"Wet goed verhuurderschap",a:"",b:"",c:"wonen",d:"Normen voor verhuurders en gemeentelijke handhaving.",flag:"check"}
+];
+
+const FLAGLABEL = {jaarlijks:"Wijzigt per 1 jan",nieuw:"Nieuw of op komst",check:"Verwijzing toevoegen"};
+
+const grid = document.getElementById('grid');
+const leeg = document.getElementById('leeg');
+const teller = document.getElementById('teller');
+const zoek = document.getElementById('zoek');
+const filterbar = document.getElementById('filters');
+
+let actiefThema = 'alles';
+let zoekterm = '';
+
+function maakFilters(){
+  const knoppen = [['alles','Alles']].concat(Object.entries(THEMAS));
+  filterbar.innerHTML = '';
+  knoppen.forEach(([key,label])=>{
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'chip';
+    b.textContent = label;
+    b.setAttribute('aria-pressed', key === actiefThema ? 'true' : 'false');
+    b.addEventListener('click', ()=>{
+      actiefThema = key;
+      [...filterbar.children].forEach(c=>c.setAttribute('aria-pressed','false'));
+      b.setAttribute('aria-pressed','true');
+      render();
+    });
+    filterbar.appendChild(b);
+  });
+}
+
+function link(w){
+  if(w.url) return w.url;
+  if(w.b) return 'https://wetten.overheid.nl/' + w.b;
+  return '';
+}
+
+function render(){
+  const q = zoekterm.trim().toLowerCase();
+  const lijst = WETTEN.filter(w=>{
+    if(actiefThema !== 'alles' && w.c !== actiefThema) return false;
+    if(!q) return true;
+    return (w.t + ' ' + w.a + ' ' + w.d + ' ' + (w.b||'') + ' ' + THEMAS[w.c]).toLowerCase().includes(q);
+  });
+
+  grid.innerHTML = '';
+  lijst.forEach(w=>{
+    const card = document.createElement('article');
+    card.className = 'card';
+
+    if(w.a){
+      const afk = document.createElement('span');
+      afk.className = 'afk';
+      afk.textContent = w.a;
+      card.appendChild(afk);
+    }
+
+    const h = document.createElement('h3');
+    h.textContent = w.t;
+    card.appendChild(h);
+
+    const p = document.createElement('p');
+    p.textContent = w.d;
+    card.appendChild(p);
+
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    const thema = document.createElement('span');
+    thema.className = 'badge thema';
+    thema.textContent = THEMAS[w.c];
+    meta.appendChild(thema);
+    if(w.flag){
+      const f = document.createElement('span');
+      f.className = 'badge ' + w.flag;
+      f.textContent = FLAGLABEL[w.flag];
+      meta.appendChild(f);
+    }
+    card.appendChild(meta);
+
+    const href = link(w);
+    if(href){
+      const a = document.createElement('a');
+      a.className = 'btn';
+      a.href = href;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = w.b ? 'Open wettekst' : 'Open bron';
+      card.appendChild(a);
+    } else {
+      const n = document.createElement('span');
+      n.className = 'nolink';
+      n.textContent = 'Verwijzing nog toe te voegen';
+      card.appendChild(n);
+    }
+
+    grid.appendChild(card);
+  });
+
+  leeg.hidden = lijst.length > 0;
+  teller.textContent = lijst.length + (lijst.length === 1 ? ' regeling' : ' regelingen');
+}
+
+zoek.addEventListener('input', e=>{ zoekterm = e.target.value; render(); });
+maakFilters();
+render();
+</script>
+</body>
+</html>
