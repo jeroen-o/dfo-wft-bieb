@@ -195,3 +195,4 @@ Nationale regelingen verwijzen naar wetten.overheid.nl, dat altijd de geldende t
 - [DFO Kennisbank](https://kennisbank.dfobv.nl/)
 - [AFM — adviseurs en bemiddelaars](https://www.afm.nl/nl-nl/sector/adviseurs-bemiddelaars)
 - [Kifid — reglementen](https://www.kifid.nl/reglementen/)
+- [DNB — Open Boek Toezicht, integriteitstoezicht](https://www.dnb.nl/voor-de-sector/open-boek-toezicht/thema-s/toezicht-op-financieel-economische-criminaliteit-integriteitstoezicht/)
