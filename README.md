@@ -8,6 +8,16 @@ Live: https://jeroen-o.github.io/dfo-wft-bieb/
 - `toets.html`: Wft-kennistoets, elke keer 7 willekeurige vragen uit 112 (vragen staan in de `VRAGEN`-lijst; het eerste antwoord is steeds het juiste)
 - `robots.txt`, `sitemap.xml`, `llms.txt`: vindbaarheid voor zoekmachines en AI-assistenten
 
+## Certificaat na de toets
+
+Na de toets vult de deelnemer naam en e-mailadres in (met toestemming) en ontvangt een certificaat met resultaat, certificaatnummer en DFO-stempel. Een kopie gaat naar info@dfobv.nl.
+
+- **Zonder configuratie** opent de knop het e-mailprogramma van de deelnemer, met het certificaat als tekst, gericht aan de deelnemer en met info@dfobv.nl in cc. De deelnemer moet zelf op Verzenden klikken. Via "Certificaat bekijken of printen" kan het certificaat als pdf worden opgeslagen.
+- **Automatisch versturen** kan via [EmailJS](https://www.emailjs.com) (gratis tot 200 mails per maand):
+  1. Maak een account aan met info@dfobv.nl en koppel de mailbox als *Email Service*.
+  2. Maak een *Email Template* met als ontvanger `{{to_email}}`, in cc `{{cc_email}}`, onderwerp `Certificaat Wft-kennistoets {{certificaatnummer}}` en als inhoud `{{{resultaat_html}}}` (drie accolades, zodat de HTML wordt weergegeven).
+  3. Vul in `toets.html` bij `const EMAILJS` de *Service ID*, *Template ID* en *Public Key* in.
+
 ## Toegang
 
 De pagina vraagt om een wachtwoord (niet hoofdlettergevoelig). Dit is een drempel in de browser en geen echte beveiliging: de inhoud staat in de broncode en in deze repository. Een ingelogde bezoeker blijft ingelogd tot het tabblad wordt gesloten.
