@@ -5,6 +5,7 @@ Doorzoekbare bibliotheek van wet- en regelgeving voor financiële dienstverlener
 Live: https://jeroen-o.github.io/dfo-wft-bieb/
 
 - `index.html`: de volledige pagina (standalone, geen build-step nodig)
+- `toets.html`: Wft-kennistoets, elke keer 7 willekeurige vragen uit 112 (vragen staan in de `VRAGEN`-lijst; het eerste antwoord is steeds het juiste)
 - `robots.txt`, `sitemap.xml`, `llms.txt`: vindbaarheid voor zoekmachines en AI-assistenten
 
 ## Toegang
